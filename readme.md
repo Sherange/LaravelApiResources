@@ -1,7 +1,9 @@
 # Using Laravel 5.5 Resources to create {JSON:API} formatted 
 
+
 ## Introducing Laravel 5.5 Resource Classes
 We now have Resource classes we can use for our APIs out of the box in Laravel 5.5 without having to install any 3rd party packages.
+
 
 ## What are Resource Classes and why should I use it?
 A Resource class is a way to transform data from one format to another. Simply put, if we have a Article model and we want to manipulate the data or remove certain fields from the model before sending that in our response, it is difficult to do so by just responding with;
@@ -25,6 +27,7 @@ class ArticleController extends Controller
 }
 ```
 
+
 >Granted this will give you a valid response, maybe something like this
 
 ```
@@ -33,6 +36,7 @@ class ArticleController extends Controller
   "title": "JSON API paints my bikeshed!",
 }
 ```
+
 But what if you wanted to format your responses to a standard like JSON:API or any one of the other numerous standards out there. We would need to override the Model’s `toArray` implementation and now we are breaking the single responsibility rule. Why should the model care how to format a response to the end user? It shouldn’t! and this is where we can now utilise Resource classes in Laravel 5.5. Instead of doing what we did above we can now create a Laravel Resource using `artisan` and transform our model in any way we like.
 
 For the rest of this article I’m going to show you how to utilise Laravel’s new Resource classes to implement the example on the [JSON:API specification home page](http://jsonapi.org/), which looks something like this;
@@ -116,13 +120,15 @@ For the rest of this article I’m going to show you how to utilise Laravel’s 
 }
 ```
 
+
 # Create our Laravel Application
 
 First things first we need a test app to work with;
 
-``
+```
 composer create-project --prefer-dist laravel/laravel laravelapiresources
 ```
+
 Bear with me as I’ll try to fly through the boring setup parts as fast as possible. I’m also going to assume you know how to connect to a database and setup your environment, etc so that I won’t have to go through that in this article.
 
 Continuing…
@@ -136,6 +142,7 @@ php artisan make:model Article -crmf
 php artisan make:model People -mf
 php artisan make:model Comment -mf
 ```
+
 As this is a tutorial we don’t want to waste time on the boring stuff so this command creates the model, resource controller (cr), migration (m) and factory (f) all in one go. Woohoo!
 
 Lets fill these up with some boiler plate so we can get to the good stuff.
