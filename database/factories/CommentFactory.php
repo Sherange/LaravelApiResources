@@ -4,9 +4,9 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Comment::class, function (Faker $faker) {
     return [
-        'article_id' => $factory->randomDigit,
-        'author_id' => $factory->randomDigit,
+        'article_id' => function() { return factory(App\Article::class)->create()->id; },
+        'author_id' => function() { return factory(App\People::class)->create()->id; },
         'body' => $factory->paragraph
-
+ 
     ];
 });

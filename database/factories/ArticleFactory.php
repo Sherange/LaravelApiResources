@@ -4,7 +4,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Article::class, function (Faker $faker) {
     return [
-        'author_id' => $factory->randomDigit,
+        'author_id' => function(){ return factory(App\People::class)->create()->id; },
         'title' => $factory->title
     ];
 });
