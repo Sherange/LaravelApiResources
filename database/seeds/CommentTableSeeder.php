@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Comment as Comment;
 
 class CommentTableSeeder extends Seeder
 {
@@ -11,6 +12,9 @@ class CommentTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Comment::class, 50)->create();
+        //Clear Data in Comment Table
+        Comment::truncate();
+
+        factory(Comment::class, 10)->create();
     }
 }

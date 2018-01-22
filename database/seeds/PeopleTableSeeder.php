@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\People as People;
 
 class PeopleTableSeeder extends Seeder
 {
@@ -11,6 +12,10 @@ class PeopleTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\People::class, 10)->create();
+        
+        //Clear Data in People Table
+        People::truncate();
+        
+        factory(People::class, 10)->create();
     }
 }
