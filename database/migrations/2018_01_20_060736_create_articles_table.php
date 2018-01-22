@@ -16,7 +16,7 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('author_id')->unasigned();
-            $table->string('title');
+            $table->string('title');    
             $table->timestamps();
             $table->foreign('author_id')->references('id')->on('people')->onDelete('cascade');
         });
