@@ -262,7 +262,22 @@ php artisan migrate
 
 You also have factory classes available to seed some test data but I’ll leave that up to you to fill in the blanks for those.
 
+# Laravel Factory Example
 
+```
+<?php
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Comment::class, function (Faker $faker) {
+    return [
+        'article_id' => function() { return factory(App\Article::class)->create()->id; },
+        'author_id' => function() { return factory(App\People::class)->create()->id; },
+        'body' => $faker->paragraph
+ 
+    ];
+});
+```
 
 
 
